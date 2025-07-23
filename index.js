@@ -30,5 +30,7 @@ app.post("/blogposts", createPost); // POST Create a new blog post
 app.put("/blogposts/:id", updatePost); // PUT Update an existing blog post by ID
 
 app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
+  process.env.NODE_ENV === "production" // check if variable NODE_ENV exists, would mean production
+    ? console.log("Running in production mode") // Log message for production
+    : console.log(`Server is running on DEV mode via http://localhost:${port}`); // development = from PC
 }); // Start the server and listen on the specified port
